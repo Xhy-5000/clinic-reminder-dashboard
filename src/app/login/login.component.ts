@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HttpClient, HttpParams } from "@angular/common/http" ;
 import { HttpHeaders } from "@angular/common/http" 
-import {ActivatedRoute, Router, RouterOutlet} from '@angular/router'
+import {Router} from '@angular/router'
 import { AuthService } from './../auth.service';
 
-type doctor={
+type Doctor={
 	docotrid: number;
 	doctorname:string;
 	doctorpassword:string
@@ -14,7 +14,7 @@ type doctor={
 type Result ={
 	code: number;
 	msg: string;
-	object: doctor|null;
+	obj: Doctor;
 	count:number
   }
 
@@ -29,19 +29,12 @@ export class LoginComponent implements OnInit{
 		password: new FormControl('000000')
 		});
   	public anyList:any;
-	// @ViewChild(RouterOutlet)
-	// private outlet: RouterOutlet = new RouterOutlet;
   
   	constructor(private http:HttpClient,private auth: AuthService, private router: Router){}
 	onSubmit() {
-		// TODO: Use EventEmitter with form value
 		const id = this.loginFormGroup.get('id')!.value;
 		const password = this.loginFormGroup!.get('password')!.value;
-		// console.log("onSubmit() begins:");
-		// console.log("id:"+id);
-		// console.log("password:"+password);
 
-		// console.warn(this.loginFormGroup.get('id')!.value);
 		this.register(id!,password!);
 	}
 
@@ -55,7 +48,7 @@ export class LoginComponent implements OnInit{
 
 	register (id:number, password:string){
 		const HTTPheaders = new HttpHeaders().set("Content-type", "application/json");
-		//console.info(headers);
+		
 		let HTTPparams = new HttpParams().set("id",id).set("password",password);
 		const options = {  headers: HTTPheaders, params: HTTPparams };
 		this.http.get<Result>("http://localhost:8080/login",options)
@@ -66,15 +59,21 @@ export class LoginComponent implements OnInit{
 				alert("wrong id or password")
 				return
 			}
-			// localStorage.clear;
+			localStorage.clear;
 			localStorage.setItem("status code",res.code.toString());
 			localStorage.setItem("msg",res.msg);
-			// localStorage.setItem("id",res.object!.docotrid.toString());
-			localStorage.setItem("name",res.object!.doctorname);
+			// console.log(res.obj);
+			// console.log(res.obj.docotrid);
+			// console.log(res.obj.doctorname);
+			// console.log(res.obj.doctorpassword);
+			// console.log(res.object!.docotrid.toString());
+			localStorage.setItem("id",id.toString());
+			localStorage.setItem("name",res.obj.doctorname);
+			// console.log(localStorage.getItem('id'));
+			// console.log(localStorage.getItem("name"));
+			// console.log(localStorage.getItem("status code"));
+			// console.log(localStorage.getItem("msg"));
 
-			// this.outlet.deactivate();
-			// this.router.navigateByUrl("/reminderlist");
-			// this.router.navigateByUrl("/historyreminder");
 			this.router.navigate(["/historyreminder"]);
 
 		})
