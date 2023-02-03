@@ -1,11 +1,23 @@
-<div>
-    <br>
-    <br>
+<div class="container">
+    <div class="row clearfix" style="margin: 120px 0 0 0 ;">
+        <h1>
+            <a routerLink="/reminderlist" routerLinkActive="active">View Reminder List</a>
+        </h1>
+        <h1>
+            <a routerLink="/postreminder" routerLinkActive="active">Post Reminder</a>
+        </h1>
+        
+    </div>
+    <form [formGroup]="historyFormGroup" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="patientid">Enter the patient id you'd like to check</label><br>
+            <input type="number" class="form-control" id="ptientid" formControlName="patientid"/>
+        </div>
+        <button type="submit" class="btn btn-success" >Submit</button>
+    </form>
+
+    <div style="width: 600px; height: 600px;">
+        <canvas id="myChart"></canvas>
+    </div>
+    
 </div>
-<p>historyreminder works!</p>
-<h1>
-    <a routerLink="/reminderlist" routerLinkActive="active">View Reminder List</a>
-</h1>
-<h1>
-    <a routerLink="/postreminder" routerLinkActive="active">Post Reminder</a>
-</h1>

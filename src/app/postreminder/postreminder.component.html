@@ -1,13 +1,32 @@
-<div>
-    <br>
-    <br>
+<div class="container">
+    <div class="row clearfix" style="margin: 120px 0 0 0 ;">
+        <form [formGroup]="postFormGroup" (ngSubmit)="onSubmit()">
+            <div>
+                <label for="patientid">patient ID</label><br>
+                <input type="number" class="form-control" id="patientid" formControlName="patientid"/>
+            </div>
+            <div>
+                <label for="detail">Reminder Details</label><br>
+                <input type="text" class="form-control" id="detail" formControlName="detail"/>
+            </div>
+            <!-- <div>
+                <label for="posttime">Start Time</label><br>
+                <input type="time" class="form-control" id="posttime" formControlName="posttime"/>
+            </div> -->
+            <div>
+                <label for="existtime">Exist Time (hours)</label><br>
+                <input type="number" class="form-control" id="existtime" formControlName="existtime"/>
+            </div>
+            <div>
+                <label for="priority">Priority</label><br>
+                <select id="priority" formControlName="priority">
+                    <option value="HIGH">HIGH</option>
+                    <option value="MID">MID</option>
+                    <option value="LOW">LOW</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success" >Submit</button>
+
+        </form>
+    </div>
 </div>
-<p>postreminder works!</p>
-<h1>
-    <a routerLink="/reminderlist" routerLinkActive="active">View Reminder List</a>
-</h1>
-<h1>
-    <a routerLink="/historyreminder" routerLinkActive="active">View History Reminder</a>
-</h1>
-<p>input patient id here</p>
-<input type="number">

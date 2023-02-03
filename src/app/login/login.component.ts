@@ -39,6 +39,9 @@ export class LoginComponent implements OnInit{
 	}
 
 	ngOnInit(): void {
+		if(this.auth.isLoggedIn()){
+			this.router.navigate(["/historyreminder"]);
+		}
 		this.loginFormGroup = new FormGroup({
 		id: new FormControl(0),
 		password: new FormControl('')
@@ -48,10 +51,9 @@ export class LoginComponent implements OnInit{
 
 	register (id:number, password:string){
 		const HTTPheaders = new HttpHeaders().set("Content-type", "application/json");
-		
-		let HTTPparams = new HttpParams().set("id",id).set("password",password);
+		const HTTPparams = new HttpParams().set("id",id).set("password",password);
 		const options = {  headers: HTTPheaders, params: HTTPparams };
-		this.http.get<Result>("http://localhost:8080/login",options)
+		this.http.get<Result>("http://localhost:8080/doctor/login",options)
 		.subscribe(res=>{ 
 			console.log(11111);
 			console.log(res);

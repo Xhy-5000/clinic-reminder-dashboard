@@ -1,12 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './auth.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'dashboard';
-  // @ViewChild(RouterOutlet) outlet: RouterOutlet;
+  constructor(private auth: AuthService) {}
+  ngOnInit(): void {}
+  logout(): void {
+    this.auth.logout();
+  }
 }
