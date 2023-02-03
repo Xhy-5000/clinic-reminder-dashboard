@@ -1,9 +1,25 @@
-<div>
+<!-- <div>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+</div> -->
+
+<div class="container">
+    <div class="row clearfix" style="margin: 120px 0 0 0 ;">
+        <form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()">
+            <div>
+                <label for="id">ID</label><br>
+                <input type="number" class="form-control" id="id" formControlName="id"/>
+            </div>
+            <div>
+                <label for="password">Password</label><br>
+                <input type="password" class="form-control" id="password" formControlName="password"/>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+
+        </form>
+    </div>
 </div>
-<h1>
-    <a routerLink="/reminderlist" routerLinkActive="active">login</a>
-</h1>
-<p>login works!</p>
-<router-outlet></router-outlet> 
+<!-- <router-outlet name="login"></router-outlet>  -->
