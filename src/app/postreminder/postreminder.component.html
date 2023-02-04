@@ -1,5 +1,14 @@
 <div class="container">
     <div class="row clearfix" style="margin: 120px 0 0 0 ;">
+        <h1>
+            Post New Reminder
+        </h1>
+        <h3>
+            <a routerLink="/historyreminder" routerLinkActive="active">View History Reminder</a>
+        </h3>
+        <h3>
+            <a routerLink="/reminderlist" routerLinkActive="active">View Reminder List</a>
+        </h3>
         <form [formGroup]="postFormGroup" (ngSubmit)="onSubmit()">
             <div>
                 <label for="patientid">patient ID</label><br>

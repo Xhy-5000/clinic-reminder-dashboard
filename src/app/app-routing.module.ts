@@ -13,7 +13,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {path: 'login', component: LoginComponent},
-  {path: 'historyreminder', component: HistoryreminderComponent, canActivate: [AuthGuard],},
+  {path: 'historyreminder', component: HistoryreminderComponent},
   {path: 'postreminder', component: PostreminderComponent},
   {path: 'reminderlist', component: ReminderlistComponent},
   {

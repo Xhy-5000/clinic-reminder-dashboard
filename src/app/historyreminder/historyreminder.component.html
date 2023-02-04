@@ -1,11 +1,14 @@
 <div class="container">
     <div class="row clearfix" style="margin: 120px 0 0 0 ;">
         <h1>
+            View Reminder Hisory Bar Chart
+        </h1>
+        <h3>
             <a routerLink="/reminderlist" routerLinkActive="active">View Reminder List</a>
-        </h1>
-        <h1>
+        </h3>
+        <h3>
             <a routerLink="/postreminder" routerLinkActive="active">Post Reminder</a>
-        </h1>
+        </h3>
         
     </div>
     <form [formGroup]="historyFormGroup" (ngSubmit)="onSubmit()">
